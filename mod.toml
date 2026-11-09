@@ -1,0 +1,60 @@
+# Settings for the mod. RecompModTool reads this to make the .nrm file.
+
+[manifest]
+
+# Your mod's ID. Make it unique so it never matches another mod.
+id = "btga_tank_bucks_topup"
+
+version = "1.0.0"
+
+# Shown in the Mods menu.
+display_name = "Tank Bucks Top-Up"
+description = """
+Example mod for the BattleTanx: Global Assault recomp. \
+Your Tank Bucks never drop below the amount you pick.
+
+Template: https://github.com/wootbeer/btgarecomp-mod-template"""
+short_description = "Tank Bucks never drop below a set amount."
+
+authors = [ "Your name here" ]
+
+# The game this mod is for. Leave this as "btga".
+game_id = "btga"
+
+# Lowest btgarecomp version this mod works on.
+minimum_recomp_version = "0.1.8"
+
+# Other mods this one needs, like "modname:1.0.0".
+dependencies = []
+optional_dependencies = []
+
+native_libraries = []
+
+[inputs]
+
+# Made by `make`.
+elf_path = "build/mod.elf"
+
+# Name of the .nrm file.
+mod_filename = "btga_tank_bucks_topup"
+
+# The game's function list. RECOMP_HOOK and RECOMP_PATCH names must be in here.
+func_reference_syms_file = "syms/battletanxga.us.rev0.syms.toml"
+data_reference_syms_files = []
+
+# Other files to put in the .nrm.
+# thumb.png is the picture shown in the Mods menu.
+additional_files = [ "thumb.png" ]
+
+# Options shown in the Mods menu. Read them with recomp_get_config_u32.
+[[manifest.config_options]]
+id = "min_bucks"
+name = "Minimum Tank Bucks"
+description = "Your Tank Bucks are topped back up to this whenever they drop below it."
+type = "Number"
+min = 0
+max = 100
+step = 5
+precision = 0
+percent = false
+default = 100
